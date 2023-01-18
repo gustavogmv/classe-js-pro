@@ -5,7 +5,14 @@
  */
 
 function printFirstAndLast(list) {
-  // ?
+    if (!list.length) {
+        return
+    }
+    let res = String(list[0])
+    if (list.length > 1) {
+        res = res + " and " + String(list[list.length - 1])
+    }
+    return res
 }
 
 console.log(printFirstAndLast([1, 2, 3, 4, 5, 6])); // 1 and 6

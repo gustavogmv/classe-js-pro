@@ -5,17 +5,31 @@
  */
 
 function flattenDeep(matrix) {
-  // ?
+    let res = []
+    if (typeof matrix === "number") {
+        res.push(matrix)
+    } else
+        for (let arr of matrix) {
+            if (typeof arr === "object") {
+                for (let item of arr) {
+                    res.push(...flattenDeep(item))
+                }
+            } else res.push(arr)
+        }
+    return res
 }
 
+console.log(flattenDeep([1]))
+console.log(flattenDeep([1, [2, 3]]))
+
 console.log(
-  flattenDeep([
-    1,
-    [2, 3],
-    [
-      [4, 5],
-      [6, 7],
-    ],
-    [[[8]]],
-  ])
+    flattenDeep([
+        1,
+        [2, 3],
+        [
+            [4, 5],
+            [6, 7],
+        ],
+        [[[8]]],
+    ])
 ); // [1, 2, 3, 4, 5, 6, 7, 8]
