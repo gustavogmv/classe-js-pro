@@ -4,7 +4,7 @@
  */
 
 function difference(listA, listB) {
-  // ?
+    return [...listA, ...listB].filter(elem => !listA.includes(elem) || !listB.includes(elem))
 }
 
 console.log(difference([1, 2, 3], [3, 4, 5])); // [1, 2, 4, 5]
