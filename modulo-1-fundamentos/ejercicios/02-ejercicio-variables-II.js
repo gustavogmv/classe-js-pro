@@ -8,7 +8,7 @@
 function createIndexLoggers() {
   let list = []; // <- Este array contendrá funciones, que ejecutan un console.log (linea 5 a la 7)
 
-  for (var i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++) {
     list.push(function () {
       console.log(i);
     });
@@ -22,3 +22,5 @@ const secondLogger = loggers[1]; // Segunda función
 
 firstLogger(); // ?
 secondLogger(); // ?
+
+for(const fun of loggers) console.log(fun)
