@@ -3,7 +3,7 @@
  */
 
 function getAcronyms(list) {
-    return list.map(str => str.split(" ").map(s=>s[0]).toString().replaceAll(",",""))
+    return list.map(str => str.split(" ").map(s=>s.charAt(0)).join(""))
 }
 
 console.log(getAcronyms(["lorem ipsum dolor", "hello world"])); // ["lid", "hw"]
