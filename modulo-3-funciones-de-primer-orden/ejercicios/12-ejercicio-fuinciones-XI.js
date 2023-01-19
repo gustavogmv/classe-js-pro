@@ -2,14 +2,16 @@
  * Implementa la función partial para un sólo parámetro.
  */
 
-function makeReducer(callback, initialValue) {
-  // ?
+function makeReducer(callback, list) {
+    return (initial) => list.reduce(callback, initial)
 }
 
-let reducer = makeReducer((acc, x) => acc + x, 0);
+const makeReducer2 = (callback, list) => (initial) => list.reduce(callback, initial)
 
-console.log(reduce((acc, x) => acc + x, 0, [1, 2, 3])); // 6
+let reducer = makeReducer((acc, x) => acc + x, [1, 2, 3]);
 
-reducer = makeReducer((acc, x) => acc + x, 10);
+console.log(reducer(0)); // 6
 
-console.log(reduce((acc, x) => acc + x, 10, [1, 2, 3])); // 16
+reducer = makeReducer2((acc, x) => acc + x, [1, 2, 3]);
+
+console.log(reducer(10)); // 16
