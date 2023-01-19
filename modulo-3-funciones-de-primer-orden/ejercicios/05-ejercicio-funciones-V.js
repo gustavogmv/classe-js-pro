@@ -5,7 +5,11 @@
  */
 
 function reduce(callback, initialValue, list) {
-  // ?
+    let acc = initialValue
+    for (const item of list) {
+        acc = callback(acc, item)
+    }
+    return acc
 }
 
 console.log(reduce((acc, x) => acc + x, 0, [1, 2, 3])); // 6
