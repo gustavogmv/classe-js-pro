@@ -8,27 +8,25 @@
 function memoize(fn) {
     const cache = {};
     return (...string) => {
-        const upperCase = []
-        for (elem of string) {
-            const isCached = cache[elem] !== undefined
-            if (!isCached) {
-                console.log("memoizing...");
-                cache[elem] = fn(elem)
-            } else {
-                console.log("memoized...");
-            }
-            upperCase.push(cache[elem])
+        const key = string.join()
+        const isCached = cache[key] !== undefined
+        if (!isCached) {
+            console.log("memoizing...");
+            cache[key] = fn(...string)
+        } else {
+            console.log("memoized...");
         }
-        return upperCase
+        return cache[key]
     }
 }
 
-function toUppercase(string) {
-    return string.toUpperCase();
+function toUppercase(...string) {
+    return string.map(str => str.toUpperCase());
 }
 
 const toUppercaseMemoized = memoize(toUppercase);
 
+console.log("To Upper Case: %s",toUppercase("Hello", "World"))
 console.log(toUppercaseMemoized("Hello", "World")); // ["HELLO", "WORLD"] (Debe verse en consola el log: "memoizing")
 console.log(toUppercaseMemoized("Hello", "Jhon")); // ["HELLO", "JHON"] (Debe verse en consola el log: "memoizing")
 console.log(toUppercaseMemoized("Hello", "World")); // ["HELLO", "WORLD"] (Debe verse en consola el log: "memoized")
