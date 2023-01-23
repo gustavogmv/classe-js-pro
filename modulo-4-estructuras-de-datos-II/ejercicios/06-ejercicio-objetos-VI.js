@@ -11,7 +11,7 @@ function cloneDeep2(obj) {
     return JSON.parse(JSON.stringify(obj))
 }
 
-function cloneDeep(obj) {
+function cloneDeepMine(obj) {
     const cloned = Object.assign({}, obj)
     Object.keys(cloned).forEach(key => {
         if (typeof cloned[key] === "object") cloned[key] = cloneDeep(cloned[key])
@@ -19,13 +19,15 @@ function cloneDeep(obj) {
     return cloned
 }
 
-function cloneDeep1(obj) {
+function cloneDeepProfe(obj) {
     const cloned = {}
     for (const [key, value] of Object.entries(obj)) {
         cloned[key] = typeof value === "object" ? cloneDeep(value) : value
     }
     return cloned
 }
+
+const cloneDeep = cloneDeepMine
 
 console.log(cloneDeep(obj) !== obj); // true
 console.log(cloneDeep(obj).b !== obj.b); // true
