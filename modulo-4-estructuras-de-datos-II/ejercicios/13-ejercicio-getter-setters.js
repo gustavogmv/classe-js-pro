@@ -11,5 +11,11 @@ Object.defineProperty(array, 'average', {
 })
 
 console.log(array.average); // Deberiamos obtener 2
+const arr2 = [1,2,3]
+arr2.average = array.average
+console.log(arr2, arr2.average);
+
 array.push(4, 5)
+arr2.push(4, 5)
 console.log(array.average); // Deberiamos obtener 3
+console.log(arr2.average);
