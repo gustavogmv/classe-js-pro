@@ -8,5 +8,5 @@ const ping = (maxCount, period, count=0) => setTimeout(() => {
     if (maxCount > 1 && count < maxCount) {
         ping(maxCount, period, ++count)
     }
-}, 500)
-ping(60, 500)
+}, period)
+ping(11, 500)
