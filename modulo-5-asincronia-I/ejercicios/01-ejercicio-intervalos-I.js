@@ -3,4 +3,4 @@
  * Incrementa el contador cada segundo e imprímelo.
  */
 
-// ?
+setTimeout(()=> console.log("Timeout..."),1000)
