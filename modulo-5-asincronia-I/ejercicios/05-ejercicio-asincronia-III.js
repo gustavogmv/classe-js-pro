@@ -8,7 +8,13 @@
 const getPlayerScore = require("./04-ejercicio-asincronia-II");
 
 function startGame(callback) {
-  // ?
+  getPlayerScore((p1)=>{
+    getPlayerScore((p2)=>{
+      getPlayerScore((p3)=>{
+        callback([p1,p2,p3])
+      })
+    })
+  })
 }
 
 startGame((game) => {
