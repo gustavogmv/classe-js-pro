@@ -7,15 +7,24 @@
  */
 
 class EventManager {
-  on() {
-    // ?
-  }
-  off() {
-    // ?
-  }
-  emit() {
-    // ?
-  }
+    listeners = {};
+
+    on(topic, listener) {
+        if (!this.listeners[topic]) {
+            this.listeners[topic] = []
+        }
+        this.listeners[topic].push(listener)
+    }
+
+    off(topic, listenerRef) {
+        const topicListeners = this.listeners[topic]
+        this.listeners[topic] = topicListeners.filter((listener) => listener !== listenerRef)
+    }
+
+    emit(topic) {
+        const topicListeners = this.listeners[topic]
+        topicListeners.forEach((listener) => listener())
+    }
 }
 
 const eventManager = new EventManager();
