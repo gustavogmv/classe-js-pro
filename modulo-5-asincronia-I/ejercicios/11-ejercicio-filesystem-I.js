@@ -18,6 +18,8 @@ function calculateDirSize(dir, callback) {
 
         function onListMapped(list) {
             console.log("Array Mapped==> ", list)
+            const sum = list.reduce((total, n) => total + n, 0);
+            callback(sum);
         }
 
         asyncMap(files, mapFileToSize, onListMapped)
