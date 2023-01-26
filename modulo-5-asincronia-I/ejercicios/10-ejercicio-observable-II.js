@@ -8,20 +8,24 @@
 const EventManager = require("./09-ejercicio-observable-I");
 
 class EventManagerOnce extends EventManager {
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  once() {
-    // ?
-  }
+    once(topic, onceCallback) {
+        const l = () => {
+            onceCallback()
+            this.off(topic, l)
+        }
+        super.on(topic, l)
+    }
 }
 
 const eventManagerOnce = new EventManagerOnce();
 
 const callback = () => {
-  console.log("explosion");
-  console.log("smoke");
+    console.log("explosion");
+    console.log("smoke");
 };
 
 eventManagerOnce.once("detonate", callback);

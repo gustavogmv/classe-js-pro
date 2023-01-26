@@ -23,24 +23,25 @@ class EventManager {
 
     emit(topic) {
         const topicListeners = this.listeners[topic]
-        topicListeners.forEach((listener) => listener())
+        topicListeners.forEach((listener) => {
+            listener()})
     }
 }
 
-const eventManager = new EventManager();
-
-const explosionCallback = () => console.log("explosion");
-const smokeCallback = () => console.log("smoke");
-
-eventManager.on("detonate", explosionCallback);
-eventManager.on("detonate", smokeCallback);
-eventManager.emit("detonate");
-// Logs recibidos:
-// - explosion
-// - smoke
-
-eventManager.off("detonate", explosionCallback);
-eventManager.emit("detonate");
+// const eventManager = new EventManager();
+//
+// const explosionCallback = () => console.log("explosion");
+// const smokeCallback = () => console.log("smoke");
+//
+// eventManager.on("detonate", explosionCallback);
+// eventManager.on("detonate", smokeCallback);
+// eventManager.emit("detonate");
+// // Logs recibidos:
+// // - explosion
+// // - smoke
+//
+// eventManager.off("detonate", explosionCallback);
+// eventManager.emit("detonate");
 // Logs recibidos:
 // - smoke
 
