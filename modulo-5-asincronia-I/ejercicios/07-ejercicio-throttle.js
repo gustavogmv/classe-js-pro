@@ -3,14 +3,20 @@
  */
 
 function throttle(func, milliseconds) {
-  // ?
+    let timer = null
+    return (...args) => {
+        if (timer === null) {
+            func(...args)
+            timer = setTimeout(() => timer = null, milliseconds)
+        }
+    }
 }
 
-const spam = () => console.log("SPAM!");
+const spam = (msg) => console.log("SPAM!", msg);
 
 const throttledSpam = throttle(spam, 500);
 
-throttledSpam(); // SPAM!
+throttledSpam("haha"); // SPAM!
 throttledSpam(); // (Sin log)
 throttledSpam(); // (Sin log)
 throttledSpam(); // (Sin log)
