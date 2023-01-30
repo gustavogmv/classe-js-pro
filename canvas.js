@@ -18,21 +18,23 @@ console.log("Node.js version:", process.version)
 //     .then(() => console.log("Alll under control"))
 
 function fetchUser(userId) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
-                resolve({
-                    id: userId,
-                    user: "Pepe"
-                })
+                if (userId % 2) {
+                    resolve({
+                        id: userId,
+                        user: "Pepe"
+                    })
+                } else reject(userId + "Not found!")
             },
-            1000)
+            1000-userId)
     })
 }
 
 function getUsers(userIds) {
     return new Promise((resolve) => {
         const promises = userIds.map(id => fetchUser(id))
-        Promise.all(promises).then(users => resolve(users))
+        Promise.any(promises).then(users => resolve(users))
     })
 }
 
