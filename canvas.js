@@ -22,19 +22,22 @@ function fetchUser(userId) {
         setTimeout(() => {
                 if (userId % 2) {
                     resolve({
-                        id: userId,
-                        user: "Pepe"
-                    })
-                } else reject(userId + "Not found!")
-            },
-            1000-userId)
+                            id: userId,
+                            user: "Pepe"
+                        }
+                    )
+                } else {
+                    reject(userId + "Not Found!!!")
+                }
+            }
+            , 1000)
     })
 }
 
 function getUsers(userIds) {
     return new Promise((resolve) => {
         const promises = userIds.map(id => fetchUser(id))
-        Promise.any(promises).then(users => resolve(users))
+        Promise.allSettled(promises).then(users => resolve(users))
     })
 }
 
