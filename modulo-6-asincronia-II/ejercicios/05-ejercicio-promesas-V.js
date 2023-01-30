@@ -13,6 +13,6 @@ function startGame() {
     })
 }
 
-startGame().then((result) => {
-    console.log(result); // [[2, 2], [4, 6], [5, 1]]
-});
+// startGame().then((result) => {
+//     console.log(result); // [[2, 2], [4, 6], [5, 1]]
+// });
