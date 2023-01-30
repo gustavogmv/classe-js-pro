@@ -7,7 +7,10 @@
 const throwDice = require("./03-ejercicio-promesas-III");
 
 function getPlayerScore() {
-  // ?
+    return new Promise((resolve, _) => {
+        //resolve([throwDice(), throwDice()])
+        throwDice().then((val) => throwDice().then((val2) => resolve([val, val2])))
+    })
 }
 
 getPlayerScore().then((result) => console.log(result)); // Ejemplo: [3, 5]
