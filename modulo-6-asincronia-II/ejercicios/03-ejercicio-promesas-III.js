@@ -11,6 +11,6 @@ function throwDice() {
     })
 }
 
-throwDice().then((result) => console.log(result)); // 2
+//throwDice().then((result) => console.log(result)); // 2
 
 module.exports = throwDice;
