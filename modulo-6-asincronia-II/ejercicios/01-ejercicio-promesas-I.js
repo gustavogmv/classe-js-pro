@@ -6,7 +6,12 @@
  */
 
 const throwOneCoin = () => {
-  // ?
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (Math.random() > 0.5) resolve("cruz")
+            else reject("cara")
+        }, 2000)
+    })
 };
 
 throwOneCoin().then(console.log); // "cruz!" o "cara..."
