@@ -13,6 +13,6 @@ function getPlayerScore() {
     })
 }
 
-getPlayerScore().then((result) => console.log(result)); // Ejemplo: [3, 5]
+//getPlayerScore().then((result) => console.log(result)); // Ejemplo: [3, 5]
 
 module.exports = getPlayerScore;
