@@ -7,11 +7,12 @@
 
 const throwOneCoin = () => {
     return new Promise((resolve, reject) => {
+        console.log("Toss coin... ", Date.now())
         setTimeout(() => {
-            if (Math.random() > 0.5) resolve("cruz")
-            else reject("cara")
+            if (Math.random() > 0.5) resolve("cruz!" + Date.now())
+            else reject("cara..." + Date.now())
         }, 2000)
     })
 };
 
-throwOneCoin().then(console.log); // "cruz!" o "cara..."
+throwOneCoin().then(console.log).catch(console.log); // "cruz!" o "cara..."
