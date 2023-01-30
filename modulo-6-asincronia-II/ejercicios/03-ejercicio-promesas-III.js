@@ -6,7 +6,7 @@
 const Wait = require("./02-ejercicio-promesas-II")
 
 function throwDice() {
-    return Wait(1000).then(() => {
+    return Wait(601).then(() => {
         return Math.ceil(Math.random() * 6)
     })
 }
