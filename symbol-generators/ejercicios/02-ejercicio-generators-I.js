@@ -4,8 +4,8 @@
  */
 
 function* generator() {
-    const vals = Array(this.valueOf()).fill(null)
-    for(const v of vals.keys()) yield v
+    let numIterations = 0
+    while (numIterations < this.valueOf()) yield numIterations++
 }
 
 Number.prototype[Symbol.iterator] = generator;
