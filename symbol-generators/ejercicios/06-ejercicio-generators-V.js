@@ -13,7 +13,7 @@ function* generator(limit) {
 function recursiveIteration(gen) {
     const val = gen.next()
     if (!val.done) {
-        console.log("Continuo iterando...", val)
+        console.log("Continuo iterando...")
         recursiveIteration(gen)
     } else {
         console.log("Paro de iterar")
