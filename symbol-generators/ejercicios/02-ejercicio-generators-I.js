@@ -4,7 +4,8 @@
  */
 
 function* generator() {
-  // ?
+    const vals = Array(this.valueOf()).fill(null)
+    for(const v of vals.keys()) yield v
 }
 
 Number.prototype[Symbol.iterator] = generator;
@@ -13,5 +14,5 @@ const number = 10;
 
 // Deberian hacerse 10 iteraciones
 for (const iteration of number) {
-  console.log(iteration);
+    console.log(iteration);
 }
