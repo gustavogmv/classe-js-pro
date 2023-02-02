@@ -4,20 +4,23 @@
  */
 
 function* generator(initialValue) {
-  // ?
+    let lastValue = initialValue
+    while(true) {
+        lastValue = yield lastValue
+    }
 }
 
 function main() {
-  const gen = generator(0);
+    const gen = generator(0);
 
-  const zero = gen.next().value;
-  console.log(zero); // 0
+    const zero = gen.next().value;
+    console.log(zero); // 0
 
-  const one = gen.next(1).value;
-  console.log(one); // 1
+    const one = gen.next(1).value;
+    console.log(one); // 1
 
-  const two = gen.next(2).value;
-  console.log(two); // 2
+    const two = gen.next(2).value;
+    console.log(two); // 2
 }
 
 main();
