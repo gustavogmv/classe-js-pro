@@ -6,26 +6,30 @@
 
 const futureValue = (value) => new Promise((resolve) => setTimeout(() => resolve(value || "missing value"), 1000));
 
-function* generator() {
-  // ?
+async function* generator() {
+    let val = Promise.resolve(0)
+    while (true) {
+        const valor = await val.then(v => v).catch(console.log)
+        val = yield valor
+    }
 }
 
 function main() {
-  const gen = generator();
+    const gen = generator();
 
-  gen.next();
+    gen.next();
 
-  const first = gen.next(futureValue()).value;
-  console.log(first); // 1
+    const first = gen.next(futureValue(1)).value;
+    console.log(first); // 1
 
-  const second = gen.next(futureValue()).value;
-  console.log(second); // 2
+    const second = gen.next(futureValue(2)).value;
+    console.log(second); // 2
 
-  const third = gen.next(futureValue()).value;
-  console.log(third); // 3
+    const third = gen.next(futureValue(3)).value;
+    console.log(third); // 3
 
-  const fourth = gen.next(futureValue()).value;
-  console.log(fourth); // 4
+    const fourth = gen.next(futureValue(4)).value;
+    console.log(fourth); // 4
 }
 
 main();
