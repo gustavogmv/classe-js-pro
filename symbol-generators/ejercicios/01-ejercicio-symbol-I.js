@@ -7,21 +7,26 @@
  * - El nombre y el apellido nunca seran accesibles de manera independiente (no hacen falta getters para los mismos.)
  */
 
+const name = Symbol("Name");
+const lastname = Symbol("Last Name");
+
 class User {
-  // ? Propiedad privada name
-  // ? Propiedad privada lastname
+    // ? Propiedad privada name
+    [name] = null;
+    // ? Propiedad privada lastname
+    [lastname] = null;
 
-  set name(value) {
-    // ?
-  }
+    set name(value) {
+        this[name] = value
+    }
 
-  set lastname(value) {
-    // ?
-  }
+    set lastname(value) {
+        this[lastname] = value
+    }
 
-  get fullname() {
-    // ?
-  }
+    get fullname() {
+        return this[name] + " " + this[lastname]
+    }
 }
 
 const user = new User();
