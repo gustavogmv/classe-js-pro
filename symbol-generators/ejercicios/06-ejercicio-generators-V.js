@@ -20,4 +20,18 @@ function recursiveIteration(gen) {
     }
 }
 
-recursiveIteration(generator(5));
+function recursiveIteration2(gen) {
+    function loop(yielded) {
+        if (yielded.done) {
+            console.log("Paro de iterar")
+            return
+        }
+        console.log("Continuo iterando...")
+        loop(gen.next())
+    }
+
+    loop(gen.next())
+}
+
+recursiveIteration2(generator(5));
+//recursiveIteration(generator(5));
