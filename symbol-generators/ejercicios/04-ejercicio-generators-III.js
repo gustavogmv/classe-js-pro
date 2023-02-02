@@ -4,11 +4,15 @@
  */
 
 function* generator() {
-  // ?
+    let odd = 1
+    while (odd < 50) {
+        yield odd
+        odd += 2
+    }
 }
 
 const gen = generator();
 
 for (const number of gen) {
-  console.log(number); // 1, 3, 5, 7, 9, ... etc
+    console.log(number); // 1, 3, 5, 7, 9, ... etc
 }
