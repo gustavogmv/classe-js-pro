@@ -5,13 +5,19 @@
  */
 
 function* generator(limit) {
-  for (let index = 0; index < limit; index++) {
-    yield index;
-  }
+    for (let index = 0; index < limit; index++) {
+        yield index;
+    }
 }
 
 function recursiveIteration(gen) {
-  // ?
+    const val = gen.next()
+    if (!val.done) {
+        console.log("Continuo iterando...", val)
+        recursiveIteration(gen)
+    } else {
+        console.log("Paro de iterar")
+    }
 }
 
 recursiveIteration(generator(5));
