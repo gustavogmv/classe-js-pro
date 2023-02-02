@@ -10,8 +10,8 @@ function* generator() {
     while (!stop) {
         console.log("Sigo eje")
         const iterate = yield
-        if (iterate !== undefined) {
-            stop = iterate.stop
+        if (iterate?.stop) {
+            break
         }
     }
     console.log("Voy a parar")
@@ -25,6 +25,6 @@ gen.next(); // "Sigo ejecutandome..."
 gen.next(); // "Sigo ejecutandome..."
 gen.next(); // "Sigo ejecutandome..."
 gen.next(); // "Sigo ejecutandome..."
-gen.next({stop: true}); // "Voy a parar."
+gen.next({stop: false}); // "Voy a parar."
 gen.next(); // (No recibimos nada en consola.)
 gen.next(); // (No recibimos nada en consola.)
